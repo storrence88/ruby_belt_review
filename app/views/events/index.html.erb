@@ -1,0 +1,39 @@
+<div class="container">
+    <h1>Welcome, <%= current_user.first_name %></h1>
+    
+    <p>Here are some of the events at your state:</p>
+    
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <td>Name</td>
+                <td>Date</td>
+                <td>Location</td>
+                <td>Host</td>
+                <td>Action/Status</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% @events.each do |event| %>
+                <tr>
+                    <td><%= event.name %></td>
+                    <td><%= event.date %></td>
+                    <td><%= event.city %></td>
+                    <td><%= event.user.first_name %></td>
+                    <td>
+                        <% if current_user.id == event.user.id %>
+                            <a href="">Edit</a> | <a href="">Delete</a>
+                        <% elsif event.attendees.exclude?(current_user.id)%>
+                            <a data-method="post" href="/attendees/<%= event.id %>">Join</a>
+                        <% else %>
+                            <p style="display: inline">Joining</p> | <a href="#">Cancel</a>
+                        <% end %> 
+                    </td>
+                </tr>
+            <% end %>
+    
+        </tbody>
+    
+    
+    </table>
+</div>
