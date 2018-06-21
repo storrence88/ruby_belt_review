@@ -10,7 +10,7 @@
 <body>
 <% if flash[:errors] %>
   <% flash[:errors].each do |e| %>
-    <%= e %>
+    <p class="alert alert-danger"><%= e %></p>
   <% end %>
 <% end %>
 
