@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   
   validates :first_name, :last_name, :email, :city, :state, :password, presence: true
   validates :first_name, :last_name, length: { in: 2..25 }
-  validates :password, length: { minimum: 8 }
+  validates :password, length: { minimum: 8 }, on: :create
   validates :email, uniqueness: true, format: { with: EMAIL_REGEX }
 
 

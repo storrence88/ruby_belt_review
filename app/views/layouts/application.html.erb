@@ -8,6 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
 <% if flash[:errors] %>
   <% flash[:errors].each do |e| %>
     <p class="alert alert-danger"><%= e %></p>
@@ -21,7 +22,7 @@
     <input type="submit" value="Log Out">
   </form>
 <% end %> 
-
+</div>
 <%= yield %>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
